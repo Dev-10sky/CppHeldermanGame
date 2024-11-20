@@ -1,6 +1,7 @@
 #include <vector>
 #include <sstream>
 #include "parsexec.h"
+#include "../include/location.h"
 
 
 
@@ -48,11 +49,11 @@ bool Parser::parseAndExecute(const std::string input)
         }
         else if (!_verb.compare("look"))
         {
-            std::cout << "It is very dark in here." << std::endl;
+            executeLook(_noun);
         }
         else if (!_verb.compare("go"))
         {
-            std::cout << "It's too dark to go anywhere." << std::endl;
+            executeGo(_noun);
         }
         else
         {
