@@ -2,6 +2,7 @@
 #include <sstream>
 #include "parsexec.h"
 #include "../include/location.h"
+#include "../include/inventory.h"
 
 
 
@@ -54,6 +55,26 @@ bool Parser::parseAndExecute(const std::string input)
         else if (!_verb.compare("go"))
         {
             executeGo(_noun);
+        }
+        else if (!_verb.compare("get"))
+        {
+            executeGet(_noun);
+        }
+        else if (!_verb.compare("drop"))
+        {
+            executeDrop(_noun);
+        }
+        else if (!_verb.compare("give"))
+        {
+            executeGive(_noun);
+        }
+        else if (!_verb.compare("ask"))
+        {
+            executeAsk(_noun);
+        }
+        else if (!_verb.compare("inventory"))
+        {
+            executeInventory();
         }
         else
         {
