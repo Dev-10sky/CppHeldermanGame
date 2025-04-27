@@ -23,10 +23,20 @@ void executeGo(const std::string noun)
     {
         // redundant due to getVisible()
     }
-    else if (obj->getLocation() == NULL && obj != player->getLocation())
+    else if (getPassage(player->getLocation(),obj) != NULL)
     {
-        std::cout << "Ok." << std::endl;
+        std::cout << "OK." << std::endl;
         player->setLocation(obj);
+        executeLook("around");
+    }
+    else if (obj->getLocation() != player->getLocation())
+    {
+        std::cout << "You don't see any " << noun << " here." << std::endl;
+    }
+    else if (obj->getDestination() != NULL)
+    {
+        std::cout << "OK." << std::endl;
+        player->setLocation(obj->getDestination());
         executeLook("around");
     }
     else

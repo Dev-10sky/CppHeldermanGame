@@ -1,4 +1,5 @@
 #include "noun.h"
+#include "../include/misc.h"
 
 
 static bool objectHasTag(OBJECT *obj, const std::string noun)
@@ -31,9 +32,10 @@ OBJECT *getVisible(const std::string intention, const std::string noun)
                 obj == playerLoc ||
                 obj->getLocation() == player ||
                 obj->getLocation() == playerLoc ||
-                obj->getLocation() == NULL ||
-                obj->getLocation()->getLocation() == player ||
-                obj->getLocation()->getLocation() == playerLoc))
+                getPassage(playerLoc, obj) != NULL ||
+                (obj->getLocation() != NULL && 
+                (obj->getLocation()->getLocation() == player ||
+                obj->getLocation()->getLocation() == playerLoc))))
     {
         std::cout << "You don't see any " << noun << "here." << std::endl;
         obj = NULL;

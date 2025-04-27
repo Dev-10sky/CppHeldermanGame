@@ -9,16 +9,19 @@ class OBJECT
     std::string _descritpion;
     std::string _tag;
     OBJECT *_location;
+    OBJECT *_destination;
 public:
     const std::string getDescription();
     const std::string getTag();
     OBJECT *getLocation();
+    OBJECT *getDestination();
     void setLocation(OBJECT *loc);
-    OBJECT(const std::string desc, const std::string tag, OBJECT * loc) 
+    OBJECT(const std::string desc, const std::string tag, OBJECT * loc, OBJECT *dest) 
     { 
         _descritpion = desc;
         _tag = tag;
         _location = loc;
+        _destination = dest;
     }
     ~OBJECT(){}
 
@@ -33,7 +36,9 @@ extern OBJECT objs[];
 #define bowl      (objs + 4)
 #define priest    (objs + 5)
 #define player    (objs + 6)
+#define intoHallway (objs + 7)
+#define exitHallway (objs + 8)
 
-#define endOfObjs (objs + 7)
+#define endOfObjs (objs + 9)
 
 #endif 
